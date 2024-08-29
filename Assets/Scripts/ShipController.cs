@@ -1,0 +1,33 @@
+using UnityEngine;
+
+public class ShipController : MonoBehaviour
+{
+    public float moveSpeed;      
+    public float friction;        
+    public float rotationSpeed;   
+
+    private Rigidbody2D rb;
+    public Joystick joystick;  
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    void Update()
+    {
+        Vector2 direction = new Vector2(joystick.Horizontal, joystick.Vertical);
+
+        if (direction.magnitude > 0.1f) 
+        {
+            rb.AddForce(direction.normalized * moveSpeed * Time.deltaTime, ForceMode2D.Impulse);
+
+            float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f; 
+            float angle = Mathf.LerpAngle(transform.eulerAngles.z, targetAngle, rotationSpeed * Time.deltaTime);
+
+            transform.rotation = Quaternion.Euler(0, 0, angle);
+        }
+
+        rb.linearVelocity *= friction;
+    }
+}

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 6313ad6325c050a47855a9dddbc61393
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 131191
+  packageName: Pixel Art Spaceships for SHMUP
+  packageVersion: 1.1
+  assetPath: Assets/Pixel Spaceships for SHMUP/Anim/explosion-01-sheet_0.controller
+  uploadId: 496585
