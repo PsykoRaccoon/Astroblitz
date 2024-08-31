@@ -1,0 +1,8 @@
+/Users/raccoon/Astroblitz/.utmp/RelWithDebInfo/48641g2m/arm64-v8a/CMakeFiles/edit_cache.dir
+/Users/raccoon/Astroblitz/.utmp/RelWithDebInfo/48641g2m/arm64-v8a/CMakeFiles/rebuild_cache.dir
+/Users/raccoon/Astroblitz/.utmp/RelWithDebInfo/48641g2m/arm64-v8a/GameActivity/CMakeFiles/game.dir
+/Users/raccoon/Astroblitz/.utmp/RelWithDebInfo/48641g2m/arm64-v8a/GameActivity/CMakeFiles/edit_cache.dir
+/Users/raccoon/Astroblitz/.utmp/RelWithDebInfo/48641g2m/arm64-v8a/GameActivity/CMakeFiles/rebuild_cache.dir
+/Users/raccoon/Astroblitz/.utmp/RelWithDebInfo/48641g2m/arm64-v8a/FramePacing/CMakeFiles/swappywrapper.dir
+/Users/raccoon/Astroblitz/.utmp/RelWithDebInfo/48641g2m/arm64-v8a/FramePacing/CMakeFiles/edit_cache.dir
+/Users/raccoon/Astroblitz/.utmp/RelWithDebInfo/48641g2m/arm64-v8a/FramePacing/CMakeFiles/rebuild_cache.dir
