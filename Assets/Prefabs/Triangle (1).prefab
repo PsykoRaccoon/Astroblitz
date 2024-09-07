@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8145302527010298271}
   m_Layer: 0
   m_Name: Triangle (1)
-  m_TagString: Untagged
+  m_TagString: Asteroid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 2322854228054983322, guid: 83874f57859ef430f81247eda20308a3, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.6462264, b: 0.69864655, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
