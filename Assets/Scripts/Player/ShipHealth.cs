@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using Unity.VisualScripting;
 
 public class ShipHealth : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class ShipHealth : MonoBehaviour
     public TextMeshProUGUI livesText; 
     public GameObject gameOverCanvas; 
     public Animator playerAnimator; 
+    public GameObject pausaCanvas;
 
     void Start()
     {
@@ -50,12 +52,13 @@ public class ShipHealth : MonoBehaviour
 
     void UpdateLivesText()
     {
-        livesText.text = "Vidas: " + lives; 
+        livesText.text = "Lifes: " + lives; 
     }
 
     void GameOver()
     {
         StartCoroutine(ShowGameOverCanvas(2.0f)); 
+        pausaCanvas.SetActive(false);
     }
 
     IEnumerator ShowGameOverCanvas(float delay)
