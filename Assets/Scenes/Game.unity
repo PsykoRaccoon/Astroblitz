@@ -1517,9 +1517,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81e6920508de94b3385c56226dfb3ae3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1.2
-  friction: 1.2
-  rotationSpeed: 7
+  thrustForce: 500
+  rotationSpeed: 200
+  drag: 1
   joystick: {fileID: 913811706}
 --- !u!212 &1181053271
 SpriteRenderer:

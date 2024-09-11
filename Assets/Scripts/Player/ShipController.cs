@@ -2,32 +2,41 @@ using UnityEngine;
 
 public class ShipController : MonoBehaviour
 {
-    public float moveSpeed;      
-    public float friction;        
-    public float rotationSpeed;   
+    public float thrustForce;
+    public float rotationSpeed;
+    public float drag;
+    public Joystick joystick; // Referencia al joystick virtual
 
     private Rigidbody2D rb;
-    public Joystick joystick;  
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        rb.linearDamping = drag; // Asignamos la resistencia inicial para simular el "derrape"
     }
 
     void Update()
     {
-        Vector2 direction = new Vector2(joystick.Horizontal, joystick.Vertical);
+        // Obtén la entrada del joystick
+        Vector2 inputDirection = new Vector2(joystick.Horizontal, joystick.Vertical);
 
-        if (direction.magnitude > 0.1f)
+        if (inputDirection.magnitude > 0.1f) // Solo se mueve si la magnitud del input es significativa
         {
-            rb.AddForce(direction.normalized * moveSpeed, ForceMode2D.Force); // Elimina Time.deltaTime
+            // Calcula el ángulo de rotación deseado basado en la entrada del joystick
+            float targetAngle = Mathf.Atan2(inputDirection.y, inputDirection.x) * Mathf.Rad2Deg - 90f;
 
-            float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
-            float angle = Mathf.LerpAngle(transform.eulerAngles.z, targetAngle, rotationSpeed * Time.deltaTime);
+            // Gira suavemente la nave hacia el ángulo objetivo usando Time.deltaTime
+            float angle = Mathf.LerpAngle(rb.rotation, targetAngle, rotationSpeed * Time.deltaTime);
+            rb.MoveRotation(angle);
 
-            transform.rotation = Quaternion.Euler(0, 0, angle);
+            // Aplica una fuerza en la dirección del joystick, ajustada por Time.deltaTime
+            rb.AddForce(inputDirection.normalized * thrustForce * Time.deltaTime);
         }
-
-        rb.linearVelocity *= (1 - friction * Time.deltaTime); // Ajuste la fricci�n en funci�n del tiempo
+        else
+        {
+            // Aumenta el valor del drag para que la nave desacelere más rápidamente cuando no hay entrada
+            rb.linearDamping = drag;
+        }
     }
+
 }
