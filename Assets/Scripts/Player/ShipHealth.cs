@@ -6,7 +6,7 @@ using Unity.VisualScripting;
 
 public class ShipHealth : MonoBehaviour
 {
-    public int lives = 3; 
+    private int lives = 3; 
     public TextMeshProUGUI livesText; 
     public GameObject gameOverCanvas; 
     public Animator playerAnimator; 
