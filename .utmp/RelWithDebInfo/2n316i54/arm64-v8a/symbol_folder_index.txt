@@ -1,0 +1,1 @@
+C:\Users\vicko\OneDrive\Documentos\Astroblitz\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\cxx\RelWithDebInfo\2n316i54\obj\arm64-v8a
