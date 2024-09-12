@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using System.Collections;
 using Unity.VisualScripting;
+using System.Numerics;
 
 public class ShipHealth : MonoBehaviour
 {
@@ -12,8 +13,14 @@ public class ShipHealth : MonoBehaviour
     public Animator playerAnimator; 
     public GameObject pausaCanvas;
 
+    public ShipShooting shipShooting;
+    
+    private Rigidbody2D rb;
+
     void Start()
     {
+        shipShooting=GetComponent<ShipShooting>();
+        rb=GetComponent<Rigidbody2D>();
         lives = PlayerPrefs.GetInt("PlayerLives", 3); 
         UpdateLivesText();
         gameOverCanvas.SetActive(false); 
@@ -31,6 +38,8 @@ public class ShipHealth : MonoBehaviour
 
     void LoseLife()
     {
+        shipShooting.enabled=false;
+        StopMovement();
         lives--; 
         PlayerPrefs.SetInt("PlayerLives", lives); 
         UpdateLivesText();
@@ -47,6 +56,15 @@ public class ShipHealth : MonoBehaviour
         if (lives <= 0)
         {
             GameOver(); 
+        }
+    }
+
+    void StopMovement()
+    {
+        if (rb!=null)
+        {
+            rb.simulated=false;
+            rb.Sleep();
         }
     }
 

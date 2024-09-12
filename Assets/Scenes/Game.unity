@@ -2373,6 +2373,7 @@ MonoBehaviour:
   gameOverCanvas: {fileID: 1703118222}
   playerAnimator: {fileID: 1181053273}
   pausaCanvas: {fileID: 364867880}
+  shipShooting: {fileID: 1181053275}
 --- !u!114 &1181053275
 MonoBehaviour:
   m_ObjectHideFlags: 0
