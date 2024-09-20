@@ -1,8 +1,0 @@
-C:/Users/vicko/OneDrive/Documentos/Astroblitz/.utmp/RelWithDebInfo/2n316i54/arm64-v8a/CMakeFiles/edit_cache.dir
-C:/Users/vicko/OneDrive/Documentos/Astroblitz/.utmp/RelWithDebInfo/2n316i54/arm64-v8a/CMakeFiles/rebuild_cache.dir
-C:/Users/vicko/OneDrive/Documentos/Astroblitz/.utmp/RelWithDebInfo/2n316i54/arm64-v8a/GameActivity/CMakeFiles/game.dir
-C:/Users/vicko/OneDrive/Documentos/Astroblitz/.utmp/RelWithDebInfo/2n316i54/arm64-v8a/GameActivity/CMakeFiles/edit_cache.dir
-C:/Users/vicko/OneDrive/Documentos/Astroblitz/.utmp/RelWithDebInfo/2n316i54/arm64-v8a/GameActivity/CMakeFiles/rebuild_cache.dir
-C:/Users/vicko/OneDrive/Documentos/Astroblitz/.utmp/RelWithDebInfo/2n316i54/arm64-v8a/FramePacing/CMakeFiles/swappywrapper.dir
-C:/Users/vicko/OneDrive/Documentos/Astroblitz/.utmp/RelWithDebInfo/2n316i54/arm64-v8a/FramePacing/CMakeFiles/edit_cache.dir
-C:/Users/vicko/OneDrive/Documentos/Astroblitz/.utmp/RelWithDebInfo/2n316i54/arm64-v8a/FramePacing/CMakeFiles/rebuild_cache.dir
