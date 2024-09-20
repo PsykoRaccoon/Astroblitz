@@ -21,6 +21,7 @@ public class PauseManager : MonoBehaviour
         else
         {
             Time.timeScale = 0;
+            Handheld.Vibrate();
             pauseScreen.SetActive(true);
             pauseBtn.SetActive(false);
             isPaused = true;

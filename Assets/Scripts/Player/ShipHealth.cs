@@ -2,8 +2,6 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using System.Collections;
-using Unity.VisualScripting;
-using System.Numerics;
 
 public class ShipHealth : MonoBehaviour
 {
@@ -12,15 +10,21 @@ public class ShipHealth : MonoBehaviour
     public GameObject gameOverCanvas; 
     public Animator playerAnimator; 
     public GameObject pausaCanvas;
-
     public ShipShooting shipShooting;
-    
     private Rigidbody2D rb;
+    private Points pointsSystem;
 
     void Start()
     {
-        shipShooting=GetComponent<ShipShooting>();
-        rb=GetComponent<Rigidbody2D>();
+        shipShooting = GetComponent<ShipShooting>();
+        rb = GetComponent<Rigidbody2D>();
+
+        GameObject gameController = GameObject.FindWithTag("GameController");
+        if (gameController != null)
+        {
+            pointsSystem = gameController.GetComponent<Points>();
+        }
+
         lives = PlayerPrefs.GetInt("PlayerLives", 3); 
         UpdateLivesText();
         gameOverCanvas.SetActive(false); 
@@ -31,6 +35,7 @@ public class ShipHealth : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Asteroid"))
         {
+            Handheld.Vibrate();
             LoseLife(); 
             StartCoroutine(RestartSceneAfterDelay(2.2f)); 
         }
@@ -38,7 +43,7 @@ public class ShipHealth : MonoBehaviour
 
     void LoseLife()
     {
-        shipShooting.enabled=false;
+        shipShooting.enabled = false;
         StopMovement();
         lives--; 
         PlayerPrefs.SetInt("PlayerLives", lives); 
@@ -51,7 +56,14 @@ public class ShipHealth : MonoBehaviour
             playerCollider.enabled = false;
         }
 
-        playerAnimator.SetTrigger("Death"); 
+        playerAnimator.SetTrigger("Death");
+
+        if (pointsSystem != null)
+        {
+            pointsSystem.isPlayerAlive=false;
+            pointsSystem.UpdateHighScore();
+            pointsSystem.ResetScore();
+        }
 
         if (lives <= 0)
         {
@@ -61,9 +73,9 @@ public class ShipHealth : MonoBehaviour
 
     void StopMovement()
     {
-        if (rb!=null)
+        if (rb != null)
         {
-            rb.simulated=false;
+            rb.simulated = false;
             rb.Sleep();
         }
     }
@@ -75,6 +87,11 @@ public class ShipHealth : MonoBehaviour
 
     void GameOver()
     {
+        if (pointsSystem != null)
+        {
+            pointsSystem.UpdateHighScore();
+        }
+
         StartCoroutine(ShowGameOverCanvas(2.0f)); 
         pausaCanvas.SetActive(false);
     }
@@ -85,7 +102,6 @@ public class ShipHealth : MonoBehaviour
         gameOverCanvas.SetActive(true); 
         Time.timeScale = 0; 
     }
-
 
     IEnumerator RestartSceneAfterDelay(float delay)
     {
