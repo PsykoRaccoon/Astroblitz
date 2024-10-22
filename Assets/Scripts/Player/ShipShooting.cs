@@ -9,8 +9,16 @@ public class ShipShooting : MonoBehaviour
     public float fireRate; 
     public float projectileSpeed; 
     public Joystick joystick; 
+    private float nextFireTime = 0f;
 
-    private float nextFireTime = 0f; 
+    public AudioClip soundClip;
+    private AudioSource audioSource;
+
+    private void Start()
+    {
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.clip = soundClip;
+    }
 
     void Update()
     {
@@ -28,6 +36,7 @@ public class ShipShooting : MonoBehaviour
     {
         foreach (Transform shootPoint in shootPoints)
         {
+            audioSource.Play();
             GameObject projectile = Instantiate(projectilePrefab, shootPoint.position, shootPoint.rotation);
             Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
             rb.linearVelocity = shootPoint.up * projectileSpeed; 

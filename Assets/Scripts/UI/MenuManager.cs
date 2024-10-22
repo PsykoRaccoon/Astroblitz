@@ -1,11 +1,13 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class MenuManager : MonoBehaviour
 {
     public GameObject menuCanvas;
     public GameObject storeCanvas;
     public GameObject optionsCanvas;
+    public float buttonDelay;
 
     private void Start()
     {
@@ -14,27 +16,51 @@ public class MenuManager : MonoBehaviour
 
     public void Play()
     {
+        StartCoroutine(DelayedPlay());
+    }
+
+    public void ShowMenu()
+    {
+        StartCoroutine(DelayedShowMenu());
+    }
+
+    public void ShowStore()
+    {
+        StartCoroutine(DelayedShowStore());
+    }
+
+    public void ShowOptions()
+    {
+        StartCoroutine(DelayedShowOptions());
+    }
+
+    private IEnumerator DelayedPlay()
+    {
+        yield return new WaitForSeconds(buttonDelay);
         SceneManager.LoadScene("Game");
         Handheld.Vibrate();
         ResetLives();
     }
 
-    public void ShowMenu()
+    private IEnumerator DelayedShowMenu()
     {
+        yield return new WaitForSeconds(buttonDelay);
         menuCanvas.SetActive(true);
         storeCanvas.SetActive(false);
         optionsCanvas.SetActive(false);
     }
 
-    public void ShowStore()
+    private IEnumerator DelayedShowStore()
     {
+        yield return new WaitForSeconds(buttonDelay);
         menuCanvas.SetActive(false);
         storeCanvas.SetActive(true);
         optionsCanvas.SetActive(false);
     }
 
-    public void ShowOptions()
+    private IEnumerator DelayedShowOptions()
     {
+        yield return new WaitForSeconds(buttonDelay);
         menuCanvas.SetActive(false);
         storeCanvas.SetActive(false);
         optionsCanvas.SetActive(true);
@@ -44,5 +70,4 @@ public class MenuManager : MonoBehaviour
     {
         PlayerPrefs.DeleteKey("PlayerLives");
     }
-
 }

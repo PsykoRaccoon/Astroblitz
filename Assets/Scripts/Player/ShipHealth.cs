@@ -12,12 +12,19 @@ public class ShipHealth : MonoBehaviour
     public GameObject pausaCanvas;
     public ShipShooting shipShooting;
     private Rigidbody2D rb;
+
     private Points pointsSystem;
+
+    public AudioClip soundClip;
+    private AudioSource audioSource;
 
     void Start()
     {
         shipShooting = GetComponent<ShipShooting>();
         rb = GetComponent<Rigidbody2D>();
+
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.clip = soundClip;
 
         GameObject gameController = GameObject.FindWithTag("GameController");
         if (gameController != null)
@@ -45,6 +52,7 @@ public class ShipHealth : MonoBehaviour
     {
         shipShooting.enabled = false;
         StopMovement();
+        audioSource.Play();
         lives--; 
         PlayerPrefs.SetInt("PlayerLives", lives); 
         UpdateLivesText();
