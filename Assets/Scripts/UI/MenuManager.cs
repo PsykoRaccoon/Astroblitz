@@ -11,6 +11,7 @@ public class MenuManager : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale=1;
         ShowMenu();
     }
 
@@ -38,7 +39,6 @@ public class MenuManager : MonoBehaviour
     {
         yield return new WaitForSeconds(buttonDelay);
         SceneManager.LoadScene("Game");
-        Handheld.Vibrate();
         ResetLives();
     }
 

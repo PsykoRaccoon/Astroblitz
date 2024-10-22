@@ -8,8 +8,6 @@ public class ButtonSound : MonoBehaviour
 
     void Start()
     {
-        audioSource = gameObject.AddComponent<AudioSource>();
-
         audioSource.clip = soundClip;
 
         audioSource.playOnAwake = false;
